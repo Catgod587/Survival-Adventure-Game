@@ -96,6 +96,8 @@ h7 {
     </h6>
 <h1>
     <button class="button button2" onclick = "Hp()">Use First-Aid Kit</button>
+    <button class="button button2" onclick = "Lighter()">Refill Lighter</button>
+    <button class="button button2" onclick = "Liquid()">Use Bottle</button>
 <button class="button button2" onclick = "Restart()">Restart</button>
 <button class="button button2" onclick = "Cheats()">Use Cheats</button>
 </h1>
@@ -183,6 +185,12 @@ var RayGun = 0; //cheat
 var cheatmap = 0; //cheat
 var Excalibur = 0;//cheat
 var Sharur = 0; //cheat
+var PizzaJohn= 0; //cheat
+var Weirdo = 0;
+var Terrordactyl = 0; //cheat
+var Cousin= 0; //cheat
+var RandomGirl= 0; //cheat
+var bill = 0;//cheat
 var x = document.getElementById("myAudio");
 
 
@@ -196,6 +204,34 @@ function pauseAudio() {
 
 function Update(){
     document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;
+}
+
+function Liquid(){
+    if (bottle == 1){
+        alert("Your Sanity has been refilled!")
+        bottle -= 0;
+            sanity = Maxsanity//restores sanity
+            alert("You now have " +sanity + "/" + Maxsanity + " Sanity left")
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+    } else {
+        alert("You do not have this item.")
+    }
+}
+
+function Lighter(){
+    if (emptylighter == 1, fluid == 1){
+        alert("You filled the empty lighter with the lighter fluid")
+        emptylighter -= 0;
+        fluid -= 0;
+        FullLighter +=0;
+        inventory.splice("Empty Lighter")
+        inventory.splice("Lighter Fluid")
+        inventory.push("Lighter")//gives you the Key
+        Inventory()//updates inventory
+        document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+    } else {
+        alert("You do not have the required items.")
+    }
 }
 
 function Inventory() {
@@ -212,41 +248,41 @@ text += value[i] + " dollars<br>" + "<br>" ;
 document.getElementById("Inventory").innerHTML = text //displays Value of Inventory item
 }}
 
-function BuyFirstAid(){//want to buy a First-Aid kits
-        if (dollars > 9){//are you to broke
+function BuyFirstAid(){
+        if (dollars > 9){//are you too broke
             if (confirm("This will allows you to heal 5 hit points\nWould you like to buy a First-Aid Kit for 10 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
                 firstaid += 1;//gives you one
                 dollars -= 10;//takes your money
-                inventory.push(firstaid + "First-Aid")//gives you the Key
+                inventory.push(firstaid + "First-Aid")
                 Inventory()//updates inventory
                 alert ("You now have "+ firstaid + " First-Aid Kits");//you have this meny now
                 document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
                 }}
                 else{
-                alert ("You need a least 10 Dollars to buy this item")}}//to broke
+                alert ("You need a least 10 Dollars to buy this item")}}//too broke
 
-function BuyAxe(){//want to buy a First-Aid kits
+function BuyAxe(){
     if (Axe == 0);
-        if (dollars > 29){//are you to broke
+        if (dollars > 29){//are you too broke
             if (confirm("You will now have an Axe\nWould you like to buy an Axe for 30 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
                 Axe += 1;//gives you one
                 dollars -= 30;//takes your money
-                inventory.push("Axe")//gives you the Key
+                inventory.push("Axe")
                value.push (15)//how much its worth
                    Inventory()//updates inventory
                 alert ("You now have "+ Axe + " Axe.");//you have this meny now
                 document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
                 }}
                 else{
-                alert ("You need a least 30 Dollars to buy this item")}}//to broke
+                alert ("You need a least 30 Dollars to buy this item")}}//too broke
 
-function BuySword(){//want to buy a First-Aid kits
+function BuySword(){
     if (Sword == 0);
-        if (dollars > 19){//are you to broke
+        if (dollars > 19){//are you too broke
             if (confirm("You will now have a Sword\nWould you like to buy a Sword for 20 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
                 Sword += 1;//gives you one
                 dollars -= 20;//takes your money
-                inventory.push("Sword")//gives you the Key
+                inventory.push("Sword")
                value.push (10)//how much its worth
                    Inventory()//updates inventory
                 alert ("You now have "+ Sword + " Sword.");//you have this meny now
@@ -255,9 +291,9 @@ function BuySword(){//want to buy a First-Aid kits
                 else{
                 alert ("You need a least 20 Dollars to buy this item")}}//to broke
 
-function BuyKnife(){//want to buy a First-Aid kits
+function BuyKnife(){
     if (Knife == 0);
-       if (dollars > 9){//are you to broke
+       if (dollars > 9){//are you too broke
            if (confirm("You will now have a Knife\nWould you like to buy a Knife for 10 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
                Knife += 1;//gives you one
                dollars -= 10;//takes your money
@@ -286,7 +322,7 @@ function BuyMachete(){//want to buy a First-Aid kits
                 else{
                 alert ("You need a least 40 Dollars to buy this item")}}//to broke
 
-function BuyMap(){//want to buy a First-Aid kits
+function BuyMap(){
     if (emptymap == 0);
        if (dollars > 4){//are you to broke
            if (confirm("You will now have an Empty Map\nWould you like to buy an Empty Map for 5 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
@@ -301,7 +337,7 @@ function BuyMap(){//want to buy a First-Aid kits
                alert ("You need a least 5 Dollars to buy this item")}}//to broke
 
 
-function BuyFluid(){//want to buy a First-Aid kits
+function BuyFluid(){
     if (fluid == 0);
         if (dollars > 4){//are you to broke
             if (confirm("You will now have Lighter Fluid\nWould you like to buy Lighter Fluid for 5 dollars?\nDon't forget to click on the Inventory to update it!")==true){//are yo sure
@@ -340,7 +376,7 @@ function buyK() {//Key
             Inventory()//updates inventory
             document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
             }}
-            else{
+            else if (dollars =59){
             alert ("you need a least 60 dollars to buy this item")}}}//ha ha your to broke
 
 
@@ -411,44 +447,32 @@ function Cheats(){
     inventory.push("Sharur")
     value.push(0)//cheats aren't worth anything
     Sharur = 1;}
-
         if(UserInput == "~Pizza"){
     inventory.push("Jayjohn (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
-
-        if(UserInput == "~"){
-    inventory.push("")
+    PizzaJohn = 1;}
+        if(UserInput == "~The'Gay'Guy"){
+    inventory.push("Caleb (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
-
-        if(UserInput == "~"){
-    inventory.push("")
+    Weirdo = 1;}
+        if(UserInput == "~GuyWhoClaimsHe'sAVirgin"){
+    inventory.push("Guy Who Shall not be Named (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
-
-        if(UserInput == "~"){
-    inventory.push("")
+    Cousin = 1;}
+        if(UserInput == "~NUTSACK"){
+    inventory.push("Bill (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
-
-        if(UserInput == "~"){
-    inventory.push("")
+    bill = 1;}
+        if(UserInput == "~FreeRealEstate"){
+    inventory.push("Cameron (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
-
-        if(UserInput == "~"){
-    inventory.push("")
+    Terrordactyl = 1;}
+        if(UserInput == "~StonerChick"){
+    inventory.push("Kayla (Distraction)")
     value.push(0)//cheats aren't worth anything
-     = 1;}
+    RandomGirl = 1;}
 
-        if(UserInput == "~"){
-    inventory.push("")
-    value.push(0)//cheats aren't worth anything
-     = 1;
-    
-
-    Inv()}}//you cheater
+    Inv()}//you cheater
 
 function Restart() { //code to go back to when the player dies or the page is loaded
 alert ("You find yourself stranded in a forest \nYou're not sure how you got there, but that doesn't really matter now.");//intro 1
@@ -479,13 +503,13 @@ if (firstaid > 0 && HP < MaxHP){//if your ingered and you have first-ad kits
 
 }
 
+var choices7 = ["Under the sink", "inside the toilet", "the stand up shower"]
 var choices4 = ["Run", "Hide", "Walk"];
 var choices3 = ["Path", "Forest"];
 var choices2 = ["Bathroom", "Kitchen", "Living Room"];
-var choices1 = ["", "", ""];
-var choices = ["Ava's Room", "Logan's Room", ""];
+var choices1 = ["Fridge", "Freezer", "Wine Shelf"];
+var choices = ["Ava's Room", "Logan's Room", "Paent's Room"];
 
-Hp()
 
 function Story() {
    alert("You open you eyes to find yourself no longer in your home.\nYou attempt to recollect yourself, but you get distracted by the blood on you.");
@@ -648,8 +672,8 @@ function Story4(){
         Side2();    
         
 }   if (choices2 == "Kitchen" || choices2 == "kitchen"){
-        alert("You walk into the Kitchen")
-
+        alert("You walk into the Kitchen. The kitchen would be like any other kitchen, minus all the blood on the wall.")
+        Side3();
 
 }   if (choices2 == "Living Room" || choices2 == "living room"){
         alert("You walk into the Living Room")
@@ -665,11 +689,16 @@ function Side1(){
             alert("Frustrated, you push onto the door, prying it open.")
             alert("The closet was just a normal, so you're kind of confused why the door was locked.\nYou check the lock, you realized it only lockes from the inside.")
             alert("You looked around the closet, but nothing seemed to be of use.")
-            alert("")
-            alert("")
-            alert("")
-            alert("")
-            alert("")
+            alert("As you get closer to a box, you for some reason get the feeling you shouldn't get close to it.")
+            alert("You open the lid. What you see inside the box makes you confused.\nYou see a monkey's paw.")
+            alert("As you go to pick up the paw, you feel a force shoving you out of the closet. The closet then slams shut.\nBefore you could react, you hear a click sound coming from the closet.")
+            alert("You pick yourself up.\nYou feel better knowing whatever was in the closet locked itself from you.")
+            alert("You lost some Sanity!")
+            sanity --;
+            alert("You now have " + sanity + "/" + Maxsanity + " Sanity left");
+            alert("Achievement Unlocked:\nCloset")
+            alert("Achievement Unlocked:\nMonkey's Paw")
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
         } if (choices == "Parent's Room" || choices == "Parents Room" || choices == "parent's room" || choices == "parents room"){
             alert("You enter the master bedroom which you assume was the parent's room.");
@@ -685,6 +714,9 @@ function Side1(){
             alert("You look at the poster, and realize it spells the word die.")
             alert("You stumble back, trying to remain relaxed. You tun out of the room.")
             alert("The wall between the Master room is the same to the closet. You decide to not look in the closet.")
+            alert("You lost some Sanity!")
+            sanity --;
+            alert("You now have " + sanity + "/" + Maxsanity + " Sanity left");
             alert("Achievement Unlocked:\nParent's Room")
             alert("Achievement Unlocked:\nThe Knocking Next Door")
             document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
@@ -733,24 +765,81 @@ function Side1(){
 }
 
 function Side2(){
-    choices7 = prompt("")
-        if (choices7 == null || choices7 == "" || choices7 == "Choose Wisely.."){
-            alert("");
+    choices7 = prompt("Since you don't have to worry about plugging your nose anymore you decide to explore the horrid bathroom before you get sick.\nWhat should you check first?", "Under the sink, inside the toilet, or the stand up shower?")
+        if (choices7 == null || choices7 == "" || choices7 == "Under the sink, inside the toilet, or the stand up shower?"){
+            alert("You decide not to bother and went to check the medicine cabinet.");
+            alert("You see a bottle with a light green liquid in it. You grab the bottle.\nThe bottle is labled 'Drink Me'")
+            alert("You open the bottle, and drink the liquid inside.")
+            alert("You feel better, like you're.. more sane.")
+            alert("Your Sanity has been refilled!")
+            sanity = Maxsanity//restores sanity
+            alert("You now have " +sanity + "/" + Maxsanity + " Sanity left")
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
-        } else if(choices7 == "" || choices7 == "" || choices7 == "" || choices7 == ""){
+        } else if(choices7 == "Under the sink" || choices7 == "under the sink" || choices7 == "sink"){
+            alert("You decide to check under the sink.\nYou open the cabinet doors.");
+            alert("You see all kinds of different types of shampoos, conditioners, soap, ect.")
+            alert("You grab a box of soap to inspect it.\nSomething that was taped to the bottom of the box caught your eye.")
+            alert("Hey, 100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
-            alert("");
-        
-        } else if(choices7 == "" || choices7 == "" || choices7 == "" || choices7 == ""){
+        } else if(choices7 == "inside the toilet" || choices7 == "toilet" || choices7 == "Inside the toilet"){
 
-            alert("");
-        } else if (choices7 == "" || choices7 == "" || choices7 == "" || choices7 == "");{
+            alert("You decide to check inside the toilet.\nIt was an average toilet, which was a great relief.");
+            alert("You pull open the top and see something sticking out.")
+            alert("Hey, 100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
-            alert("");
-        
-    }}
+        } else if (choices7 == "the stand up shower" || choices7 == "stand up shower" || choices7 == "shower"){
 
-function Story5(){
+            alert("You decide to check stand up shower");
+            alert("You pull back the curtains, you seen something green attached to it.")
+            alert("Hey, 100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+}}
+
+function Side3(){
+    choices1 = prompt("Despite the blood, you feel almost at home. You need to search for anything you could use.\nWhat should you check first?", "Fridge, Freezer, Wine Cabinet")
+    if(choices1 == null || choices1 == "" || choices1 == "Fridge, Freezer, Wine Cabinet"){
+        alert("You didn't really care about those so you choose the book sitting on the counter.")
+        alert("You open the book, and you discover something amazing!")
+        alert("100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+    } if (choices1 == "Fridge" || choices1 == "fridge"){
+        alert("You go to open the fridge, but decide against it. Who knows what is in there.")
+        alert("You see a note on the fridge with someone named 'Logan' on it. Under it was money.")
+        alert("Hey, 100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+    } if (choices1 == "Freezer" || choices1 == "freezer"){
+        alert("You open the freezer, and see your favorite ice cream!")
+        alert("You grab it and open it, but there was no ice cream, only dollar bills.")
+        alert("Hey, 100 dollars! Not neat. You wanted ice cream.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+    } if (choices1 == "Wine Cabinet" || choices1 == "Wine cabinet" || choices1 == "wine cabinet"){
+        alert("You decide screw it, you're old enough to drink, right? Oh well, you go to the wine cabinet anyway.")
+        alert("Oh yuck! It's all cheap. You pull the wine out, and discover money behind it.")
+        alert("Hey, 100 dollars! Neat. Anything is better than cheap wine.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+}}
+
+
+
+function Story6(){
+alert("You consider buying a weapon, you have a bad feeling something is going to happen.\n*Hint: You probably should buy something.*")
+}
+
+function Story7(){
 alert("This part of the story isn't done yet. Please try again at another time!")
 }
 
@@ -771,15 +860,15 @@ function Chapter2(){
 }
 
 function Chapter3(){
-    Story5();
+    Story7();
 }
 
 function Chapter4(){
-    Story5();
+    Story7();
 }
 
 function Chapter5(){
-    Story5();
+    Story7();
 }
 
 function Health(){
