@@ -92,7 +92,6 @@ h7 {
     <button class="button button4" onclick = "Chapter2()">Chapter 2</button>
     <button class="button button4" onclick = "Chapter3()">Chapter 3</button>
     <button class="button button4" onclick = "Chapter4()">Chapter 4</button>
-    <button class="button button4" onclick = "Chapter5()">Chapter 5</button>
     </h6>
 <h1>
     <button class="button button2" onclick = "Hp()">Use First-Aid Kit</button>
@@ -190,7 +189,7 @@ var Weirdo = 0;
 var Terrordactyl = 0; //cheat
 var Cousin= 0; //cheat
 var RandomGirl= 0; //cheat
-var bill = 0;//cheat
+var nut = 0;//cheat
 var x = document.getElementById("myAudio");
 
 
@@ -226,7 +225,7 @@ function Lighter(){
         FullLighter +=0;
         inventory.splice("Empty Lighter")
         inventory.splice("Lighter Fluid")
-        inventory.push("Lighter")//gives you the Key
+        inventory.push("Lighter")
         Inventory()//updates inventory
         document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
     } else {
@@ -426,65 +425,74 @@ function Cheats(){
     if(UserInput == "~Slice&Dice"){
     inventory.push("Light Saber")
     value.push(0)//cheats aren't worth anything
-    Lightsaber = 1;}
+    Lightsaber = 1;
+    Inventory();}//updates your inventory
     if(UserInput == "~BlackOps2:Zombies"){
     inventory.push("Ray Gun")
     value.push(0)//cheats aren't worth anything
-    RayGun = 1;}
+    RayGun = 1;
+    Inventory();}//updates your inventory
     if(UserInput == "~IWannaShootYouAll"){
     inventory.push("Pistol")
     value.push(0)//cheats aren't worth anything
-    Pistol = 1;}
+    Pistol = 1;
+    Inventory();}//updates your inventory
     if(UserInput == "~ImTheMapImTheMap"){
     inventory.push("Cheat Map")
     value.push(0)//cheats aren't worth anything
-    cheatmap = 1;}
+    cheatmap = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~TheRoyalPrat"){
     inventory.push("Excalibur")
     value.push(0)//cheats aren't worth anything
-    Excalibur = 1;}
+    Excalibur = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~SmasherOfThousands"){
     inventory.push("Sharur")
     value.push(0)//cheats aren't worth anything
-    Sharur = 1;}
+    Sharur = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~Pizza"){
     inventory.push("Jayjohn (Distraction)")
     value.push(0)//cheats aren't worth anything
-    PizzaJohn = 1;}
+    PizzaJohn = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~The'Gay'Guy"){
     inventory.push("Caleb (Distraction)")
     value.push(0)//cheats aren't worth anything
-    Weirdo = 1;}
-        if(UserInput == "~GuyWhoClaimsHe'sAVirgin"){
-    inventory.push("Guy Who Shall not be Named (Distraction)")
-    value.push(0)//cheats aren't worth anything
-    Cousin = 1;}
+    Weirdo = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~NUTSACK"){
     inventory.push("Bill (Distraction)")
     value.push(0)//cheats aren't worth anything
-    bill = 1;}
+    nut = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~FreeRealEstate"){
     inventory.push("Cameron (Distraction)")
     value.push(0)//cheats aren't worth anything
-    Terrordactyl = 1;}
+    Terrordactyl = 1;
+    Inventory();}//updates your inventory
         if(UserInput == "~StonerChick"){
     inventory.push("Kayla (Distraction)")
     value.push(0)//cheats aren't worth anything
-    RandomGirl = 1;}
-
-    Inv()}//you cheater
+    RandomGirl = 1;
+    Inventory();}//updates your inventory
+    }//you cheater
 
 function Restart() { //code to go back to when the player dies or the page is loaded
 alert ("You find yourself stranded in a forest \nYou're not sure how you got there, but that doesn't really matter now.");//intro 1
 alert ("You want to escape this unknown place. \nDo you have what it takes to survive?");//intro 2
+alert("Warning: contains vivid content and adult swearing.\nProceed with caution.")//warning because why not
 name = prompt("What is your name?" , "Blair");//Lets the player set their name
 value = [20];//sets value for 1st inventory item
 key = 0;//tells the game to get rid of the Skeleton Key if you have it
-HP = 20;//Resets Hit Points
-MaxHP = 20; //resets Max HP
+HP = 10;//Resets Hit Points
+MaxHP = 10; //resets Max HP
 bottle = 0; //resets bottles
 firstaid = 0;//the number of first-aid kits the player has
 dollars = 5;//the amount of dollars the player has
+sanity = 20;
+Maxsanity = 20;
 Update();
 inventory = ["Empty Lighter"]; //starter inventory
 document.getElementById("name").innerHTML = "Welcome " + name ;
@@ -500,7 +508,9 @@ if (firstaid > 0 && HP < MaxHP){//if your ingered and you have first-ad kits
         if (HP > MaxHP){
         HP=MaxHP //cant go over max life
         document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;}}}//]Updates Display
-
+        if (firstaid == 0){
+            alert("You do not have this item.")
+        }
 }
 
 var choices7 = ["Under the sink", "inside the toilet", "the stand up shower"]
@@ -509,7 +519,7 @@ var choices3 = ["Path", "Forest"];
 var choices2 = ["Bathroom", "Kitchen", "Living Room"];
 var choices1 = ["Fridge", "Freezer", "Wine Shelf"];
 var choices = ["Ava's Room", "Logan's Room", "Paent's Room"];
-
+var choices5 = ["Couch", "Bookcase", "Coffee Table"]
 
 function Story() {
    alert("You open you eyes to find yourself no longer in your home.\nYou attempt to recollect yourself, but you get distracted by the blood on you.");
@@ -623,7 +633,7 @@ function Story3(){
         alert("As you walk down the path, you get that irritating feeling like someone is watching you.\nYou remember what the note said: 'Never forget you are being watched for one second, you will lose.'");
         alert("Simply remembering that gruesome letter sendss chills up and down your spine.\nA sudden fog appeared around you. You didn't realize it before because you were lost in thought.");
         alert("You get an uneasy feeling.")
-        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but only fog and faint silhouettes of trees.");
+        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but you only see fog and faint silhouettes of the trees.");
         alert("You shake your head and look forward.")
         alert("All of the sudden, there was a face in the fog.\nLike a curious dog, the face slowly turned its head 45 degrees to the left.")
         alert("Shaking, you start to run\nYou come across a house a little off the path. You look behind you, the face still visible.")
@@ -635,7 +645,7 @@ function Story3(){
         alert("As you walk down the path, you get that irritating feeling like someone is watching you.\nYou remember what the note said: 'Never forget you are being watched for one second, you will lose.'");
         alert("Simply remembering that gruesome letter sends chills up and down your spine.\nA sudden fog appeared around you. You didn't realize it before because you were lost in thought.");
         alert("You get an uneasy feeling.")
-        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but only fog and faint silhouettes of trees.");
+        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but you only see fog and faint silhouettes of the trees.");
         alert("You shake your head and look forward.")
         alert("All of the sudden, there was a face in the fog.\nLike a curious dog, the face slowly turned its head 45 degrees to the left.")
         alert("Shaking, you start to run\nYou come across a house a little off the path. You look behind you, the face still visible.")
@@ -648,7 +658,7 @@ function Story3(){
         alert("Simply remembering that gruesome letter sends chills up and down your spine.\nA sudden fog appeared around you. You didn't realize it before because you were lost in thought.");
         alert("You get an uneasy feeling.\nYou notice you're on the path, which confuses you. How did you get on the path if you never went on it to begin with?")
         alert("You decide not to bother; why should you? Obviously something wanted you to be on the path")
-        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but only fog and faint silhouettes of trees.");
+        alert("Out of the corner of your eye, you see a faint figure.\nYou look at the area you saw it, but you only see fog and faint silhouettes of the trees.");
         alert("You shake your head and look forward.")
         alert("All of the sudden, there was a face in the fog.\nLike a curious dog, the face slowly turned its head 45 degrees to the left.")
         alert("Shaking, you start to run\nYou come across a house a little off the path. You look behind you, the face still visible.")
@@ -661,23 +671,31 @@ function Story3(){
 function Story4(){
     alert("If you have never been in a creepy house that gave you the most horrid sight, well this house changed that.")
     alert("You look outside the window and the very thick fog. You can no longer see the silhouettes of trees anymore.")
-    choices2 = prompt("Well, you're not planning on going out soon, so you prepare to look around the house.\nWhere will you start?\nBathroom, Kitchen, or the Living Room?", "Choose Wisely..")
+    choices2 = prompt("Well, you're not planning on going out anytime soon, so you prepare to look around the house.\nWhere will you start?\nBathroom, Kitchen, or the Living Room?", "Choose Wisely..")
     if (choices2 == null || choices2 == "" || choices2 == "Choose Wisely.."){
         alert("You couldn't choose, so you decided to go up the stairs.")
         Side1();
-        
+        alert("Achievement Unlocked:\nI wonder what's up the Stairs..")
+        alert("You head back downstairs.")
+
     } if (choices2 == "Bathroom" || choices2 == "bathroom"){
         alert("You walk into the Bathroom; you can't really tell which one smells worse, the sink or some rotton raw fish")
         alert("You went to plug your nose, but all of a sudden the bathroom doesn't smell anymore.")
         Side2();    
-        
+        alert("Achievement Unlocked:\nThe bathroom")
+        alert("You exit the bathroom.")
+
 }   if (choices2 == "Kitchen" || choices2 == "kitchen"){
         alert("You walk into the Kitchen. The kitchen would be like any other kitchen, minus all the blood on the wall.")
         Side3();
+        alert("Achievement Unlocked:\nThe kitchen")
+        alert("You exit the kitchen.")
 
 }   if (choices2 == "Living Room" || choices2 == "living room"){
         alert("You walk into the Living Room")
-
+        Side4();
+        alert("Achievement Unlocked:\nThe living room")
+        alert("You exit the living room.")
 }}
 
 function Side1(){
@@ -707,12 +725,12 @@ function Side1(){
             dollars += 50;
             alert("All of a sudden you hear three taps on the wall. It sounds like it came from the other side of the wall.")
             alert("Three more taps.")
-            alert("The taps suddnly get feirce, maybe it wants you to tap back?")
+            alert("The taps suddenly get feirce; maybe it wants you to tap back?")
             alert("You Tap three times on the wall, which it respondes with four taps.")
             alert("There is a morse code poster on the wall. You decide to say hello.\nFour short taps\none short tap\none short, one long, two short taps\nthree long taps.")
-            alert("In response, you get:\none long, two short\ntwo short taps\none short tap")
+            alert("In response, you get:\none long, two short taps\ntwo short taps\none short tap.")
             alert("You look at the poster, and realize it spells the word die.")
-            alert("You stumble back, trying to remain relaxed. You tun out of the room.")
+            alert("You stumble back, trying to remain relaxed. You run out of the room.")
             alert("The wall between the Master room is the same to the closet. You decide to not look in the closet.")
             alert("You lost some Sanity!")
             sanity --;
@@ -729,7 +747,7 @@ function Side1(){
             alert("You see the computer on to a Google Doc file. Logan was writing about the thing in the window.")
             alert("You see tape on the desk, you do not want this ugly thing staring at you.\nAs you begin to tape it down, the thing starts to frown; the skin around it's mouth started to crack.")
             alert("The house started to shake almost like an earthquake.\nYou quickly took down the tape.")
-            alert("The house stops shaking. The thing was smiling again, as if nothing wrong.")
+            alert("The house stops shaking. The thing was smiling again, as if nothing was wrong.")
             alert("You slowly left the room, locking it behing you.")
             alert("You will officially never be the same.")
             alert("You lost some Sanity!")
@@ -752,7 +770,7 @@ function Side1(){
             alert("'It did not hurt when I.. took it off.\nPlus Rose wanted it!'\nThe page ends there.")
             alert("You couldn't help but get stuck on the name 'Rose'.. Why, it even sounds familiar to you.")
             alert("The sudden realization hits you. You almost feel forced to look at the doll.\nThe doll..\nis Rose.")
-            alert("Rose turns its head to face you. You start to shake.\nThe Rose's 'perfect' face slowly starts to crack as Rose smiled.")
+            alert("Rose turns its head to face you. You start to shake.\nRose's 'perfect' face slowly starts to crack as Rose smiled.")
             alert("Out of terror, you run out of the room, locking the door behind you.")
             alert("You lost some Sanity!")
             sanity --;
@@ -833,14 +851,364 @@ function Side3(){
 
 }}
 
+function Side4(){
+    choices5 = prompt("You living room looked a lot better than both the kitchen and bathroom combined. Well, you need to get this 'job' over with and find anything useful.\nWhere should you look?", "Couch, Bookcase, Coffee Table")
+    if (choices5 == null || choices5 == "" || choices5 == "Couch, Bookcase, Coffee Table"){
+        alert("None of the other options seemed worth it, so you look at the Entertainment table.")
+        alert("You move some movies around and find some money.")
+        alert("100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
+    } else if (choices5 == "Couch"|| choices5 == "couch"){
+        alert("You head over to the couch.")
+        alert("You stick your hands under the cushions, soon you feel something. You pull it out.")
+        alert("100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
 
-function Story6(){
+    } else if (choices5 = "Bookcase" || choices5 == "bookcase"){
+        alert("You look at the bookcase, you see many trophies and medals for someone named 'Ava' for Soccor and Drawing. You see one that was for someone named 'Logan' for being on the Honor Roll.")
+        alert("Behind the trophy for Logan, you see something. You grab it.")
+        alert("100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+    } else if (choices5 = "Coffee Table" || choices5 == "Coffee table" || choices5 == "coffee table" || choices5 == "Table" || choices5 == "table"){
+        alert("You go to the coffee table, wondering if anything useful was there.")
+        alert("You find a picture of a young girl, no older than maybe eight. You feel something on the back of the photo.")
+        alert("100 dollars! Neat.")
+            dollars += 100;
+            document.getElementById("HP&Dollars").innerHTML = "Hp: "+HP +"/"+ MaxHP +" || Dollars: " + dollars + " || Sanity: " + sanity + "/" + Maxsanity;//]Updates Display
+
+    }
+}
+
+function Story5(){
 alert("You consider buying a weapon, you have a bad feeling something is going to happen.\n*Hint: You probably should buy something.*")
 }
 
+var battle = ["Axe"]
+
+function Story6(){
+    alert("You look out the window, relieved the fog has cleared. You go to open the door, but the door opens by itself.")
+    alert("In front of you; a man appears before you, staring at you.")
+    alert("The man was opened his mouth to say something, but instead he clenches his fists. He points at you, yelling:\n'You..! I am going to kill you for what you did!'")
+    alert("You are confused as to this man, who you have not met before, is lashing out at you.")
+    Battle();
+}
+
+function Battle(){
+    battle = prompt("The man pulls out a knife, beckoning you to fight him.\nHow will you fight him?\n\nYou must write the name of weapon\nIf it's a distraction weapon, just write the Name", "Choose Carefully..")//what do you want to  sell
+    if (battle == null || battle == "" || battle == "Choose Carefully.."){
+        alert("You don't want to fist fight someone who has a knife, so it's probably best to choose something else.")
+        alert("Redirecting back to choices...")
+        Battle();
+    }
+    
+    if (battle == "Axe" || battle == "axe"){
+    if (Axe == 1){//weapon you can buy
+        alert("You grab your axe and swing it onto your shoulder.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with the axe.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the axe scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your axe down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+        alert("Achievement Unlocked:\nVolstagg")
+    } else if (Axe == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}} 
+
+    if (battle == "Machete" || battle == "machete"){
+    if (Machete == 1){
+        alert("You grab your machete and go into the copy his stance.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with machete.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the machete scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your machete down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (Machete == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Knife" || battle == "knife"){
+    if (Knife == 1){
+        alert("You grab your knife and copy his stance.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with knife.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the knife scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+ 
+
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your knife down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (Knife == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Sword" || battle == "sword"){
+    if (Sword == 1){
+        alert("You grab sword and swing it a full circle at your side.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with your sword.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the sword scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+ 
+
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your sword down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (Sword == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Jayjohn" || battle == "jayjohn"){//cheat
+    if (PizzaJohn == 1){
+        alert("You look at Jayjohn, who's carrying a pizza boxes in a red wagon. He look at you.\nYou point at the man standing there looking at you two. He opened his mouth like he was saying 'Oh yeah.'")
+        alert("Jayjohn looks around for a weapon, but he looks at his pizza. He suddenly looks very annoyed. Yelling 'REEEEEEEEEEEEEEEEEE!' he grabs slices of pizza and continuously throws them at the man until he stumbles.")
+        alert("'What the f*** is this?' the man says, very loudly.")
+        alert("Jayjohn gives you the signal to run away, which you gladly take. You see a note on a table. You grab it before leaving.")
+        alert("The moment you were long gone, Jayjohn soon runs out of pizza. The man laughs at Jayjohn.\n'Where's your pizza now, boy?' The man asks before stabbing Jayjohn.")
+        alert("Achievement Unlocked:\nChicken's Way Out")
+        alert("Achievement Unlocked:\nPizza Delivery")
+        PizzaJohn -= 0;
+        inventory.splice("Jayjohn (Distraction)")
+        Inventory();
+    } else if (PizzaJohn == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Kayla" || battle == "kayla"){//cheat
+    if (RandomGirl == 1){
+        alert("You look at Kayla, who gives you a dumbfounded. 'Oh! I have to do something, right.'")
+        alert("Kayla then starts screaming, asking random questions, calling the man 'Phil' and then screaming inaudible words.")
+        alert("The man covers his ears. You make your getaway. You see a note on a table. You grab it before leaving.")
+        alert("The man eventually stabs Kayla to get piece and quiet.")
+        alert("Achievement Unlocked:\nChicken's Way Out")
+        alert("Achievement Unlocked:\nBanshee")
+    } else if (RandomGirl == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Bill" || battle == "bill"){//cheat
+    if (nut == 1){
+        alert("You look at Bill, who looks at you. 'What, do you want me to do something?'")
+        alert("'Obviously!' you say to him.")
+        alert("He walks over to the man, kicks him in the leg. The man falls over, who then looks up to Bill.")
+        alert("Bill grabs his nuts through his sweat pants and hits the man with them. The man collapses.")
+        alert("Bill, excited, calls Caleb to tell him what just happened.")
+        alert("You leave Bill to hit Nut talk and make your getaway. You see a note on a table. You grab it before leaving.")
+        alert("Achievement Unlocked:\nChicken's Way Out")
+        alert("Achievement Unlocked:\nBalls of Steel")
+    } else if (nut == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Cameron" || battle == "cameron"){//cheat
+    if (Terrordactyl == 1){
+        alert("You look at Cameron, who already knew the plan.")
+        alert("He runs to the man, screeching ")
+        alert("As you make your getaway, you softly hear Cameron say- 'Free real estate,' to the man. You see a note on a table. You grab it before leaving.")
+        alert("Achievement Unlocked:\nChicken's Way Out")
+        alert("Achievement Unlocked:\nAre you sure the dinosaurs died?")
+    } else if (Terrordactyl == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+        if (battle == "Caleb" || battle == "caleb"){//cheat
+    if (Weirdo == 1){
+        alert("You look at Caleb, who already knew the plan.")
+        alert("He runs to the man, moaning like a wild man.")
+        alert("You make your getaway. You see a note on a table. You grab it before leaving.")
+        alert("Achievement Unlocked:\nChicken's Way Out")
+        alert("Achievement Unlocked:\nWho Knew Moaning Men Would be Useful")
+    } else if (Weirdo == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+
+        if (battle == "Sharur" || battle == "sharur"){//cheat
+    if (Sharur == 1){
+        alert("You grab Sharur and swing it onto your shoulder.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with Sharur.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the Sharur scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your Sharur down low, colliding into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (Sharur == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+        if (battle == "Light Saber" || battle == "light saber"){//cheat
+    if (Lightsaber == 1){
+        alert("You grab Light Saber and swing it about as it made 'whoosing' sounds.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, slicing his knife in half and pushing him back. He pulls out another knife.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing you had the upper hand.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, slicing through the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your axe down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (Lightsaber == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+        if (battle == "Ray Gun" || battle == "ray gun"){//cheat
+    if (RayGun == 1){
+        alert("You grab your Ray Gun and point it at him.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, kicking him in the stomach. The man flew backwords, but recovered.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You try to shoot him, realizing that you were at a disavantage against him.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, accidentally placing a bullet hole into the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing your Ray Gun down low, shooting him in his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+    } else if (RayGun == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+        if (battle == "Pistol" || battle == "pistol"){//cheat
+    if (Pistol == 1){
+        alert("You grab your pistol and point it at him.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, kicking him in the stomach. The man flew backwords, but recovered.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You try to shoot him, realizing that you were at a disavantage against him.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, accidentally placing a bullet hole into the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you aim your pistol down low, shooting him in his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+
+
+
+    } else if (Pistol == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}
+
+    if (battle == "Excalibur" || battle == "excalibur"){//cheat
+    if (Excalibur == 1){
+        alert("You grab Exaclibur and swing it a full circle at your side.\n'Oh you think you're some bada** or something?' the man asks.")
+        alert("You give him a cocky smile.\n'So what if I am? I'd rather die than live down on my knees.'")
+        alert("'I wouldn't be so cocky with what you did,' the man sneers. The man runs to you, preping his knife to be a final blow.")
+        alert("'And what exactly did I do?' you say, parrying his attack and pushing him back.")
+        alert("The man snickered.\n'So you don't remember anything?' The man asks, 'yet you're covered in blood.'")
+        alert("You take a swing at him, realizing how slow you are with Excalibur.\n'Sounds stupid, I know, but it is the truth.'")
+        alert("The man makes a jabbing motion with his knife to your torse; you stumble backwards, the Excalibur scraping the brown hardwood floor.")
+        alert("'That's fine,' the man says, 'You will find out one way or another!'\nThe man thrusts the knife to you before you could recover, you barely manage to dogde it.\nYou take a deep cut to your face!")
+        alert("You took 1 Damage!");
+               HP -= 1;
+               alert("You have " + HP + "/" + MaxHP + " hit points left");
+        alert("You stare at the man, who is celebrating his 'victory' a bit too quickly.\nSomething inside you takes over. The room feels as if time was moving slowly.")
+        alert("You charge to him, you swing Exacalibur down low, slicing into his knee.")
+        alert("Time suddenly comes back to normal, the man erupts into a scream as he fell to the ground in agony.")
+        alert("'Just end it. My heart's an endless winter filled with rage because of you. Go on, get on with it!' he says briefly. You comply, ending his pain.")
+        alert("You find a note on the man, you take it before you leave. It had your name on it.")
+        alert("Achievement Unlocked;\nAll hail King Arthur!")
+        
+    } else if (Excalibur == 0){
+        alert("You do not have this item. Please choose another.")
+        alert("Redirecting back to choices...")
+        Battle();}}}
+
 function Story7(){
-alert("This part of the story isn't done yet. Please try again at another time!")
+alert("You read the note when you're far away from the house.")
+alert("The note is from a newspaper.\n'Murder of the Goldfarb House'")
+alert("'Reports of Ava Goldfarb, Logan Goldfarb, and Terissa Goldfarb was murdered late last night.\nMultiple stab wounds to the upper half of the bodies.\nThere was no evidence of a break-in.'")
+alert("'The husband, Tom Goldfarb, is a suspect, as he was home at the time of the murder.\nHe says he witnessed the whole murder.\nNext door neighers report seeing a middle aged person running from their home at the time the murder took place.'")
+alert("'Police are still unsure of who this mystery murderer is.\nPlease contact police if you have any information of who this family killer could be.'")
+alert("You flip the newspaper cut-out over.")
+alert("On the back was written:\nNever Forget.\n08/27/15\nI know who did it. It was you " + name + ".")
+alert("You eventually find your way out.")
+alert("Only to be greeted by police.")
 }
 
 function StoryStart(){
@@ -860,14 +1228,10 @@ function Chapter2(){
 }
 
 function Chapter3(){
-    Story7();
+    Story6();
 }
 
 function Chapter4(){
-    Story7();
-}
-
-function Chapter5(){
     Story7();
 }
 
